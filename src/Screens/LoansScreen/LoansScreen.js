@@ -171,7 +171,7 @@ const LoansScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyLoansErrorsHandler}
             >
-              Verify That G Sheets and SH Loans Match
+              Verify G Sheets and SH Loans Match
             </Button>
           </div>
         </Grid>
