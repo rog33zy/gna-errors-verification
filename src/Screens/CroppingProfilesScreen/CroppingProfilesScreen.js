@@ -136,7 +136,7 @@ const CroppingProfilesScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyCroppingProfilesHaveLoansHandler}
             >
-              Verify All Cropping Profiles Are Attached To Loans
+              Cropping Profiles Not Attached To Loans
             </Button>
           </div>
         </Grid>
@@ -148,7 +148,7 @@ const CroppingProfilesScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyLoansHaveCroppingProfilesHandler}
             >
-              Verify All Loans Are Attached To Cropping Profiles
+              Loans Not Attached To Cropping Profiles
             </Button>
           </div>
         </Grid>

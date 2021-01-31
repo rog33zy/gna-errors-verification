@@ -95,7 +95,7 @@ const FieldsScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyCroppingProfilesHaveLoansHandler}
             >
-              Verify All Cropping Profiles Are Attached To Fields
+              Cropping Profiles Not Attached To Fields
             </Button>
           </div>
         </Grid>
