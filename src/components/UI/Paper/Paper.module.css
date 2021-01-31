@@ -1,0 +1,10 @@
+.PaperContainer {
+  width: 90%;
+  height: 100px;
+  margin: 40px auto;
+}
+
+.PaperContainer :hover {
+  background-color: #4d6423;
+  cursor: pointer;
+}

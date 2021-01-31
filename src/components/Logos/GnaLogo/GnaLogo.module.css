@@ -1,0 +1,30 @@
+.GnaLogo {
+  background-size: cover;
+  display: flex;
+  padding: 5px;
+  width: 110px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  /* border: 1px solid #ffffff; */
+}
+
+.GnaLogo img {
+  width: 100%;
+  height: auto;
+}
+
+.GnaLogo:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .GnaLogo {
+    max-width: 10%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .GnaLogo {
+    max-width: 7%;
+  }
+}
