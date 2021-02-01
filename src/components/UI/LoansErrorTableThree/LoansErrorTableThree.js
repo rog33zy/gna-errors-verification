@@ -89,9 +89,12 @@ export default function CustomizedTables(props) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {rows.map((row, index) => (
                   <StyledTableRow
-                    key={row.farmer.split("(GNA00000")[1].split(")")[0]}
+                    key={
+                      row.farmer.split("(GNA00000")[1].split(")")[0] +
+                      index.toString()
+                    }
                   >
                     <StyledTableCell component="th" scope="row">
                       <span style={{ fontSize: "12px" }}>

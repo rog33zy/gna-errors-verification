@@ -8,6 +8,9 @@ const CropsProfErrorOne = (props) => {
 
   function errorsListHandler() {
     for (let i = 0; i < shCroppingProfilesSheetData.length; i++) {
+      if (shCroppingProfilesSheetData[i] === undefined) {
+        continue;
+      }
       const shCroppingProfileFarmerId = shCroppingProfilesSheetData[i].farmer
         .split("(GNA00000")[1]
         .split(")")[0];
@@ -15,6 +18,9 @@ const CropsProfErrorOne = (props) => {
         i
       ].crop.split("/")[1];
       for (let j = 0; j < shDownloadLoansSheetData.length; j++) {
+        if (shDownloadLoansSheetData[j] === undefined) {
+          continue;
+        }
         const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
           .split("(GNA00000")[1]
           .split(")")[0];
@@ -27,7 +33,9 @@ const CropsProfErrorOne = (props) => {
           shDownloadsSeedVariety === shCroppingProfileSeedVariety
         ) {
           shCroppingProfilesSheetData.splice(i, 1);
+          shDownloadLoansSheetData.splice(j, 1);
           i -= 1;
+          j -= 1;
           continue;
         } else {
           continue;

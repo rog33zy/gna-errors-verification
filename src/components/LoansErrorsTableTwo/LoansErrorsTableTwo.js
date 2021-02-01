@@ -5,7 +5,6 @@ import TableTwo from "../../components/UI/LoansErrorTableTwo/LoansErrorTableTwo"
 const LoansErrorsTableTwo = (props) => {
   const combinedInputsLoansSheetData = props.combinedInputsLoansSheetData;
   const shDownloadLoansSheetData = props.shDownloadLoansSheetData;
-
   function errorsListHandler() {
     for (let i = 0; i < combinedInputsLoansSheetData.length; i++) {
       if (combinedInputsLoansSheetData[i] === undefined) {
@@ -30,7 +29,9 @@ const LoansErrorsTableTwo = (props) => {
           combinedInputsSeedVariety === shDownloadsSeedVariety
         ) {
           combinedInputsLoansSheetData.splice(i, 1);
+          shDownloadLoansSheetData.splice(j, 1);
           i -= 1;
+          j -= 1;
           continue;
         } else {
           continue;

@@ -89,8 +89,8 @@ export default function CustomizedTables(props) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <StyledTableRow key={row.id_card_number}>
+                {rows.map((row, index) => (
+                  <StyledTableRow key={row.id_card_number + index.toString()}>
                     <StyledTableCell component="th" scope="row">
                       <span style={{ fontSize: "12px" }}>
                         {row.id_card_number}

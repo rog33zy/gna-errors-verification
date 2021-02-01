@@ -96,9 +96,9 @@ export default function CustomizedTables(props) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {rows.map((row, index) => (
                   <Tooltip title={row.farmer_name} placement="bottom">
-                    <StyledTableRow key={row.farmer_id}>
+                    <StyledTableRow key={row.farmer_id + index.toString()}>
                       <StyledTableCell component="th" scope="row">
                         <span style={{ fontSize: "12px" }}>
                           {row.farmer_id}

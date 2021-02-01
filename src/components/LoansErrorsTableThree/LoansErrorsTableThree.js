@@ -8,6 +8,9 @@ const LoansErrorsTableThree = (props) => {
 
   function errorsListHandler() {
     for (let i = 0; i < shDownloadLoansSheetData.length; i++) {
+      if (shDownloadLoansSheetData[i] === undefined) {
+        continue;
+      }
       const shDownloadsFarmerId = shDownloadLoansSheetData[i].farmer
         .split("(GNA00000")[1]
         .split(")")[0];
@@ -15,6 +18,9 @@ const LoansErrorsTableThree = (props) => {
         .split("(")[0]
         .trim();
       for (let j = 0; j < combinedInputsLoansSheetData.length; j++) {
+        if (combinedInputsLoansSheetData[j] === undefined) {
+          continue;
+        }
         const combinedInputsFarmerId =
           combinedInputsLoansSheetData[j].id_card_number;
 
@@ -26,7 +32,9 @@ const LoansErrorsTableThree = (props) => {
           combinedInputsSeedVariety === shDownloadsSeedVariety
         ) {
           shDownloadLoansSheetData.splice(i, 1);
+          combinedInputsLoansSheetData.splice(j, 1);
           i -= 1;
+          j -= 1;
           continue;
         } else {
           continue;
