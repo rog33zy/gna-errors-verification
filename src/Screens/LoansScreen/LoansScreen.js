@@ -145,7 +145,7 @@ const LoansScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyGoogleSheetsLoansAreInShErrorsHandler}
             >
-              G Sheets Loans Not In SH
+              Google Sheets Loans Not In SH
             </Button>
           </div>
         </Grid>
@@ -158,7 +158,7 @@ const LoansScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyShLoansAreInGoogleSheetsErrorsHandler}
             >
-              SH Loans Not In G Sheets
+              SH Loans Not In Google Sheets
             </Button>
           </div>
         </Grid>
@@ -171,7 +171,7 @@ const LoansScreen = (props) => {
               disabled={!isErrorButtonDisabled}
               onClick={verifyLoansErrorsHandler}
             >
-              G Sheets &amp; SH Loans Not Matching
+              Google Sheets &amp; SH Loans Not Matching
             </Button>
           </div>
         </Grid>
