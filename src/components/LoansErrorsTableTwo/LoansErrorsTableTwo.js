@@ -8,10 +8,16 @@ const LoansErrorsTableTwo = (props) => {
 
   function errorsListHandler() {
     for (let i = 0; i < combinedInputsLoansSheetData.length; i++) {
+      if (combinedInputsLoansSheetData[i] === undefined) {
+        continue;
+      }
       const combinedInputsFarmerId =
         combinedInputsLoansSheetData[i].id_card_number;
       const combinedInputsSeedVariety = combinedInputsLoansSheetData[i].variety;
       for (let j = 0; j < shDownloadLoansSheetData.length; j++) {
+        if (shDownloadLoansSheetData[j] === undefined) {
+          continue;
+        }
         const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
           .split("(GNA00000")[1]
           .split(")")[0];
