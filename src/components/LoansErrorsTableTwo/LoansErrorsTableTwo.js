@@ -14,7 +14,10 @@ const LoansErrorsTableTwo = (props) => {
         combinedInputsLoansSheetData[i].id_card_number;
       const combinedInputsSeedVariety = combinedInputsLoansSheetData[i].variety;
       for (let j = 0; j < shDownloadLoansSheetData.length; j++) {
-        if (shDownloadLoansSheetData[j] === undefined) {
+        if (
+          shDownloadLoansSheetData[j] === undefined ||
+          shDownloadLoansSheetData[j].farmer === null
+        ) {
           continue;
         }
         const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer

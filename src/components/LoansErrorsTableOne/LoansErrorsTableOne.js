@@ -94,6 +94,9 @@ const LoansErrorsTableOne = (props) => {
         combinedInputsAdditionalSeed = 0;
       }
       for (var j = 0; j < shDownloadLoansSheetData.length; j++) {
+        if (shDownloadLoansSheetData[j].farmer === null) {
+          continue;
+        }
         const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
           .split("(GNA00000")[1]
           .split(")")[0];

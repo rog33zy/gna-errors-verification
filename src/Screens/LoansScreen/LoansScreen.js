@@ -22,7 +22,7 @@ const LoansScreen = (props) => {
   const [shLoansSheetData, setShLoansSheetData] = React.useState(null);
 
   const [combinedLoansSheetLabel, setCombinedLoansSheetLabel] = React.useState(
-    "Upload Combined Inputs Sheet"
+    "Upload Google Sheets Combined Inputs Sheet"
   );
 
   const [shLoansSheetLabel, setShLoansSheetLabel] = React.useState(

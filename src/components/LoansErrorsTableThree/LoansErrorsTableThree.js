@@ -11,6 +11,12 @@ const LoansErrorsTableThree = (props) => {
       if (shDownloadLoansSheetData[i] === undefined) {
         continue;
       }
+
+      if (shDownloadLoansSheetData[i].farmer === null) {
+        shDownloadLoansSheetData.splice(i, 1);
+        i -= 1;
+        continue;
+      }
       const shDownloadsFarmerId = shDownloadLoansSheetData[i].farmer
         .split("(GNA00000")[1]
         .split(")")[0];
