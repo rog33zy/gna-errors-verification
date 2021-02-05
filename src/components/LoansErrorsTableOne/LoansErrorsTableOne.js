@@ -144,6 +144,11 @@ const LoansErrorsTableOne = (props) => {
             shDownloadsSeedQuantityReceived;
           const doesFertilizerQuantityMatch =
             combinedInputsFertilizerQuantity === shDownloadsFertilizerQuantity;
+          console.log(
+            combinedInputsFertilizerQuantity,
+            shDownloadsFertilizerQuantity
+          );
+
           const doesInoculantQuantityMatch =
             combinedInputsInoculantQuantity === shDownloadsInoculantQuantity;
           const doesGlyphosateQuantityMatch =

@@ -11,12 +11,18 @@ const CropsProfErrorTwo = (props) => {
       if (shDownloadLoansSheetData[j] === undefined) {
         continue;
       }
+      if (shDownloadLoansSheetData[j].farmer === null) {
+        shDownloadLoansSheetData.splice(j, 1);
+        j -= 1;
+        continue;
+      }
       const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
         .split("(GNA00000")[1]
         .split(")")[0];
       const shDownloadsSeedVariety = shDownloadLoansSheetData[j].seed_type
         .split("(")[0]
         .trim();
+
       for (let i = 0; i < shCroppingProfilesSheetData.length; i++) {
         if (shCroppingProfilesSheetData[i] === undefined) {
           continue;

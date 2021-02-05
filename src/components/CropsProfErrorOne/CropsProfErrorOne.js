@@ -18,7 +18,10 @@ const CropsProfErrorOne = (props) => {
         i
       ].crop.split("/")[1];
       for (let j = 0; j < shDownloadLoansSheetData.length; j++) {
-        if (shDownloadLoansSheetData[j] === undefined) {
+        if (
+          shDownloadLoansSheetData[j] === undefined ||
+          shDownloadLoansSheetData[j].farmer === null
+        ) {
           continue;
         }
         const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
