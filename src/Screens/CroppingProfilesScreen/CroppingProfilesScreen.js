@@ -49,7 +49,7 @@ const CroppingProfilesScreen = (props) => {
   };
 
   const isErrorButtonDisabled =
-    shCroppingProfilesSheetLabel &&
+    shCroppingProfilesSheetLabel === "Successfully Uploaded" &&
     shLoansSheetLabel === "Successfully Uploaded";
 
   let contentToShow = (

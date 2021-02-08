@@ -52,7 +52,8 @@ const LoansScreen = (props) => {
   };
 
   const isErrorButtonDisabled =
-    combinedLoansSheetLabel && shLoansSheetLabel === "Successfully Uploaded";
+    shLoansSheetLabel === "Successfully Uploaded" &&
+    combinedLoansSheetLabel === "Successfully Uploaded";
 
   let contentToShow = (
     <div
