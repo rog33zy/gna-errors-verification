@@ -41,27 +41,42 @@ const LoansErrorsTableOne = (props) => {
         combinedInputsLoansSheetData[i].area_of_land__ha_;
       var combinedInputsSeedQuantityReceived =
         combinedInputsLoansSheetData[i].seed_quantity_received__kg_;
-      if (combinedInputsSeedQuantityReceived === null) {
+      if (
+        combinedInputsSeedQuantityReceived === null ||
+        typeof combinedInputsSeedQuantityReceived === "string"
+      ) {
         combinedInputsSeedQuantityReceived = 0;
       }
       var combinedInputsFertilizerQuantity =
         combinedInputsLoansSheetData[i].fertilizer_bags;
-      if (combinedInputsFertilizerQuantity === null) {
+      if (
+        combinedInputsFertilizerQuantity === null ||
+        typeof combinedInputsFertilizerQuantity === "string"
+      ) {
         combinedInputsFertilizerQuantity = 0;
       }
       var combinedInputsInoculantQuantity =
         combinedInputsLoansSheetData[i].inoculant_quantity;
-      if (combinedInputsInoculantQuantity === null) {
+      if (
+        combinedInputsInoculantQuantity === null ||
+        typeof combinedInputsInoculantQuantity === "string"
+      ) {
         combinedInputsInoculantQuantity = 0;
       }
       var combinedInputsGlyphosateQuantity =
         combinedInputsLoansSheetData[i].glyphosate_quantity;
-      if (combinedInputsGlyphosateQuantity === null) {
+      if (
+        combinedInputsGlyphosateQuantity === null ||
+        typeof combinedInputsGlyphosateQuantity === "string"
+      ) {
         combinedInputsGlyphosateQuantity = 0;
       }
       var combinedInputsPostEmergenceHerbicideQuantity =
         combinedInputsLoansSheetData[i].post_emergency_herbicide_quantity;
-      if (combinedInputsPostEmergenceHerbicideQuantity === null) {
+      if (
+        combinedInputsPostEmergenceHerbicideQuantity === null ||
+        typeof combinedInputsPostEmergenceHerbicideQuantity === "string"
+      ) {
         combinedInputsPostEmergenceHerbicideQuantity = 0;
       }
       var combinedInputsInsecticideType =
@@ -80,17 +95,26 @@ const LoansErrorsTableOne = (props) => {
 
       var combinedInputsInsecticideQuantity =
         combinedInputsLoansSheetData[i].insecticide_quantity;
-      if (combinedInputsInsecticideQuantity === null) {
+      if (
+        combinedInputsInsecticideQuantity === null ||
+        typeof combinedInputsInsecticideQuantity === "string"
+      ) {
         combinedInputsInsecticideQuantity = 0;
       }
       var combinedInputsFungicideQuantity =
         combinedInputsLoansSheetData[i].fungicide_quantity;
-      if (combinedInputsFungicideQuantity === null) {
+      if (
+        combinedInputsFungicideQuantity === null ||
+        typeof combinedInputsFungicideQuantity === "string"
+      ) {
         combinedInputsFungicideQuantity = 0;
       }
       var combinedInputsAdditionalSeed =
         combinedInputsLoansSheetData[i].additional_seed_received__kg_;
-      if (combinedInputsAdditionalSeed === null) {
+      if (
+        combinedInputsAdditionalSeed === null ||
+        typeof combinedInputsAdditionalSeed === "string"
+      ) {
         combinedInputsAdditionalSeed = 0;
       }
       for (var j = 0; j < shDownloadLoansSheetData.length; j++) {
@@ -144,11 +168,6 @@ const LoansErrorsTableOne = (props) => {
             shDownloadsSeedQuantityReceived;
           const doesFertilizerQuantityMatch =
             combinedInputsFertilizerQuantity === shDownloadsFertilizerQuantity;
-          console.log(
-            combinedInputsFertilizerQuantity,
-            shDownloadsFertilizerQuantity
-          );
-
           const doesInoculantQuantityMatch =
             combinedInputsInoculantQuantity === shDownloadsInoculantQuantity;
           const doesGlyphosateQuantityMatch =

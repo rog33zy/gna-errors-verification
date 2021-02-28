@@ -8,10 +8,15 @@ import { Route, Switch } from "react-router-dom";
 
 import AppBar from "./components/UI/AppBar/AppBar";
 
-import HomePageScreen from "./Screens/HomePageScreen/HomePageScreen";
-import LoansScreen from "./Screens/LoansScreen/LoansScreen";
-import CroppingProfilesScreen from "./Screens/CroppingProfilesScreen/CroppingProfilesScreen";
-import FieldsScreen from "./Screens/FieldsScreen/FieldsScreen";
+import {
+  HomePageScreen,
+  PreBuyBackHomePageScreen,
+  LoansScreen,
+  CroppingProfilesScreen,
+  FieldsScreen,
+  BuyBackHomePageScreen,
+  GenerateUnleashedFileScreen,
+} from "./Screens";
 
 function App() {
   return (
@@ -20,6 +25,12 @@ function App() {
       <Switch>
         <AppBar>
           <Route exact path="/" component={HomePageScreen} />
+          <Route
+            exact
+            path="/pre-buyback"
+            component={PreBuyBackHomePageScreen}
+          />
+          <Route exact path="/buyback" component={BuyBackHomePageScreen} />
           <Route exact path="/loans" component={LoansScreen} />
           <Route
             exact
@@ -27,6 +38,11 @@ function App() {
             component={CroppingProfilesScreen}
           />
           <Route exact path="/fields" component={FieldsScreen} />
+          <Route
+            exact
+            path="/generate-unleashed-file"
+            component={GenerateUnleashedFileScreen}
+          />
         </AppBar>
       </Switch>
     </ThemeProvider>

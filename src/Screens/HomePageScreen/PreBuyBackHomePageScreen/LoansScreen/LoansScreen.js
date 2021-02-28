@@ -2,37 +2,36 @@ import React from "react";
 
 import { Grid, Divider } from "@material-ui/core";
 
-import Button from "../../components/UI/Button/Button";
+import Button from "../../../../components/UI/Button/Button";
 
-import Reader from "../../components/Reader/Reader";
+import Reader from "../../../../components/Reader/Reader";
 
 import classes from "./LoansScreen.module.css";
 
-import CropsProfErrorOne from "../../components/CropsProfErrorOne/CropsProfErrorOne";
-import CropsProfErrorTwo from "../../components/CropsProfErrorTwo/CropsProfErrorTwo";
+import LoansErrorsTableOne from "../../../../components/LoansErrorsTableOne/LoansErrorsTableOne";
+import LoansErrorsTableTwo from "../../../../components/LoansErrorsTableTwo/LoansErrorsTableTwo";
+import LoansErrorsTableThree from "../../../../components/LoansErrorsTableThree/LoansErrorsTableThree";
 
-const CroppingProfilesScreen = (props) => {
-  const [
-    shCroppingProfilesSheetData,
-    setShCroppingProfilesData,
-  ] = React.useState(null);
+const LoansScreen = (props) => {
+  const [combinedLoansSheetData, setCombinedLoansSheetData] = React.useState(
+    null
+  );
 
   const [contentToShowTicker, setContentToShowTicker] = React.useState(null);
 
   const [shLoansSheetData, setShLoansSheetData] = React.useState(null);
 
-  const [
-    shCroppingProfilesSheetLabel,
-    setShCroppingProfilesSheetLabel,
-  ] = React.useState("Upload Smallholdr Cropping Profiles CSV File");
-
-  const [shLoansSheetLabel, setShLoansSheetLabel] = React.useState(
-    "Upload Smallholdr Loans CSV File"
+  const [combinedLoansSheetLabel, setCombinedLoansSheetLabel] = React.useState(
+    "Upload Google Sheets Combined Inputs Sheet"
   );
 
-  const setShCroppingProfilesSheetDataHandler = (data) => {
-    setShCroppingProfilesData(data);
-    setShCroppingProfilesSheetLabel("Successfully Uploaded");
+  const [shLoansSheetLabel, setShLoansSheetLabel] = React.useState(
+    "Upload Smallholdr Loans CSV Download"
+  );
+
+  const setCombinedLoansSheetDataHandler = (data) => {
+    setCombinedLoansSheetData(data);
+    setCombinedLoansSheetLabel("Successfully Uploaded");
   };
 
   const setShLoansSheetDataHandler = (data) => {
@@ -40,17 +39,21 @@ const CroppingProfilesScreen = (props) => {
     setShLoansSheetLabel("Successfully Uploaded");
   };
 
-  const verifyCroppingProfilesHaveLoansHandler = () => {
+  const verifyLoansErrorsHandler = () => {
     setContentToShowTicker("TableOne");
   };
 
-  const verifyLoansHaveCroppingProfilesHandler = () => {
+  const verifyGoogleSheetsLoansAreInShErrorsHandler = () => {
     setContentToShowTicker("TableTwo");
   };
 
+  const verifyShLoansAreInGoogleSheetsErrorsHandler = () => {
+    setContentToShowTicker("TableThree");
+  };
+
   const isErrorButtonDisabled =
-    shCroppingProfilesSheetLabel === "Successfully Uploaded" &&
-    shLoansSheetLabel === "Successfully Uploaded";
+    shLoansSheetLabel === "Successfully Uploaded" &&
+    combinedLoansSheetLabel === "Successfully Uploaded";
 
   let contentToShow = (
     <div
@@ -67,7 +70,7 @@ const CroppingProfilesScreen = (props) => {
       <p>
         Upload{" "}
         <strong>
-          <em>"Cropping Profiles .CSV File"</em>{" "}
+          <em>"Google Sheets Combined Inputs .CSV File"</em>{" "}
         </strong>
         and{" "}
         <strong>
@@ -80,15 +83,22 @@ const CroppingProfilesScreen = (props) => {
 
   if (contentToShowTicker === "TableOne") {
     contentToShow = (
-      <CropsProfErrorOne
-        shCroppingProfilesSheetData={[...shCroppingProfilesSheetData]}
+      <LoansErrorsTableOne
+        combinedInputsLoansSheetData={[...combinedLoansSheetData]}
         shDownloadLoansSheetData={[...shLoansSheetData]}
       />
     );
   } else if (contentToShowTicker === "TableTwo") {
     contentToShow = (
-      <CropsProfErrorTwo
-        shCroppingProfilesSheetData={[...shCroppingProfilesSheetData]}
+      <LoansErrorsTableTwo
+        combinedInputsLoansSheetData={[...combinedLoansSheetData]}
+        shDownloadLoansSheetData={[...shLoansSheetData]}
+      />
+    );
+  } else if (contentToShowTicker === "TableThree") {
+    contentToShow = (
+      <LoansErrorsTableThree
+        combinedInputsLoansSheetData={[...combinedLoansSheetData]}
         shDownloadLoansSheetData={[...shLoansSheetData]}
       />
     );
@@ -100,10 +110,10 @@ const CroppingProfilesScreen = (props) => {
         <Grid item xs={6}>
           <div className={classes.UploadButton}>
             <Button variant="outlined" color="primary">
-              {shCroppingProfilesSheetLabel}
+              {combinedLoansSheetLabel}
               <Reader
                 marginLeft="-600px"
-                setFileData={setShCroppingProfilesSheetDataHandler}
+                setFileData={setCombinedLoansSheetDataHandler}
               />
             </Button>
           </div>
@@ -128,27 +138,41 @@ const CroppingProfilesScreen = (props) => {
         alignItems="center"
         spacing={0}
       >
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <div className={classes.ErrorButton}>
             <Button
               variant="contained"
               color="primary"
               disabled={!isErrorButtonDisabled}
-              onClick={verifyCroppingProfilesHaveLoansHandler}
+              onClick={verifyGoogleSheetsLoansAreInShErrorsHandler}
             >
-              Cropping Profiles Not Attached To Loans
+              Google Sheets Loans Not In SH
             </Button>
           </div>
         </Grid>
-        <Grid item xs={6}>
+
+        <Grid item xs={4}>
           <div className={classes.ErrorButton}>
             <Button
               variant="contained"
               color="primary"
               disabled={!isErrorButtonDisabled}
-              onClick={verifyLoansHaveCroppingProfilesHandler}
+              onClick={verifyShLoansAreInGoogleSheetsErrorsHandler}
             >
-              Loans Not Attached To Cropping Profiles
+              SH Loans Not In Google Sheets
+            </Button>
+          </div>
+        </Grid>
+
+        <Grid item xs={4}>
+          <div className={classes.ErrorButton}>
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={!isErrorButtonDisabled}
+              onClick={verifyLoansErrorsHandler}
+            >
+              Google Sheets &amp; SH Loans Not Matching
             </Button>
           </div>
         </Grid>
@@ -160,4 +184,4 @@ const CroppingProfilesScreen = (props) => {
   );
 };
 
-export default CroppingProfilesScreen;
+export default LoansScreen;

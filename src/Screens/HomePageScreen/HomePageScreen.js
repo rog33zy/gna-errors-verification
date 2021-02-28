@@ -8,14 +8,12 @@ const HomePageScreen = (props) => {
   return (
     <div className={classes.HomePageScreen}>
       <div className={classes.content}>
-        <Paper {...props} pathWhenClicked="/loans">
-          Loans
+        <Paper {...props} pathWhenClicked="/pre-buyback">
+          Pre - Buyback
         </Paper>
-        <Paper {...props} pathWhenClicked="/cropping-profiles">
-          Cropping Profiles
-        </Paper>
-        <Paper {...props} pathWhenClicked="/fields">
-          Fields
+
+        <Paper {...props} pathWhenClicked="/buyback">
+          Buyback
         </Paper>
       </div>
     </div>
