@@ -16,6 +16,8 @@ import {
   FieldsScreen,
   BuyBackHomePageScreen,
   GenerateUnleashedFileScreen,
+  DuplicatesErrorsScreen,
+  FaultyEntriesScreen,
 } from "./Screens";
 
 function App() {
@@ -25,23 +27,41 @@ function App() {
       <Switch>
         <AppBar>
           <Route exact path="/" component={HomePageScreen} />
+
           <Route
             exact
             path="/pre-buyback"
             component={PreBuyBackHomePageScreen}
           />
+
           <Route exact path="/buyback" component={BuyBackHomePageScreen} />
-          <Route exact path="/loans" component={LoansScreen} />
+
+          <Route exact path="/pre-buyback/loans" component={LoansScreen} />
+
           <Route
             exact
-            path="/cropping-profiles"
+            path="/pre-buyback/cropping-profiles"
             component={CroppingProfilesScreen}
           />
-          <Route exact path="/fields" component={FieldsScreen} />
+
+          <Route exact path="/pre-buyback/fields" component={FieldsScreen} />
+
           <Route
             exact
-            path="/generate-unleashed-file"
+            path="/buyback/generate-unleashed-file"
             component={GenerateUnleashedFileScreen}
+          />
+
+          <Route
+            exact
+            path="/buyback/check-for-duplicates"
+            component={DuplicatesErrorsScreen}
+          />
+
+          <Route
+            exact
+            path="/buyback/check-for-faulty-entries"
+            component={FaultyEntriesScreen}
           />
         </AppBar>
       </Switch>

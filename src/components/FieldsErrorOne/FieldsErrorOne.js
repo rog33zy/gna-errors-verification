@@ -4,21 +4,18 @@ import FieldsErrorTableOne from "../UI/CropsProfErrorTableOne/CropsProfErrorTabl
 
 const FieldsErrorOne = (props) => {
   const shCroppingProfilesSheetData = props.shCroppingProfilesSheetData;
-  const finalList = [];
+
   function errorsListHandler() {
+    const finalList = [];
     for (let i = 0; i < shCroppingProfilesSheetData.length; i++) {
-      console.log(
-        shCroppingProfilesSheetData[i].field,
-        shCroppingProfilesSheetData.length
-      );
       if (shCroppingProfilesSheetData[i].field === null) {
         finalList.push(shCroppingProfilesSheetData[i]);
         continue;
       }
     }
-    console.log(finalList, "end");
     return finalList;
   }
+
   return (
     <div>
       <FieldsErrorTableOne

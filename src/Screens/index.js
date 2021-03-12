@@ -11,3 +11,7 @@ export { default as FieldsScreen } from "./HomePageScreen/PreBuyBackHomePageScre
 export { default as BuyBackHomePageScreen } from "./HomePageScreen/BuyBackHomePageScreen/BuyBackHomePageScreen";
 
 export { default as GenerateUnleashedFileScreen } from "./HomePageScreen/BuyBackHomePageScreen/GenerateUnleashedFileScreen/GenerateUnleashedFileScreen";
+
+export { default as DuplicatesErrorsScreen } from "./HomePageScreen/BuyBackHomePageScreen/DuplicatesErrorScreen/DuplicatesErrorScreen";
+
+export { default as FaultyEntriesScreen } from "./HomePageScreen/BuyBackHomePageScreen/FaultyEntriesScreen/FaultyEntriesScreen";

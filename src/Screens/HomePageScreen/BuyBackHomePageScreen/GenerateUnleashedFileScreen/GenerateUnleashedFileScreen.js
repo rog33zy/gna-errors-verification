@@ -8,7 +8,7 @@ import Button from "../../../../components/UI/Button/Button";
 
 import Reader from "../../../../components/Reader/Reader";
 
-import classes from "./LoansScreen.module.css";
+import classes from "../LoansScreen.module.css";
 
 const GenerateUnleashedFileScreen = (props) => {
   const [unleashedFileSheetData, setUnleashedFileSheetData] = React.useState(

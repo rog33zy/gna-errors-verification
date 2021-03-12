@@ -8,13 +8,13 @@ const PreBuyBackHomePageScreen = (props) => {
   return (
     <div className={classes.HomePageScreen}>
       <div className={classes.content}>
-        <Paper {...props} pathWhenClicked="/loans">
+        <Paper {...props} pathWhenClicked="/pre-buyback/loans">
           Loans
         </Paper>
-        <Paper {...props} pathWhenClicked="/cropping-profiles">
+        <Paper {...props} pathWhenClicked="/pre-buyback/cropping-profiles">
           Cropping Profiles
         </Paper>
-        <Paper {...props} pathWhenClicked="/fields">
+        <Paper {...props} pathWhenClicked="/pre-buyback/fields">
           Fields
         </Paper>
       </div>
