@@ -18,6 +18,7 @@ import {
   GenerateUnleashedFileScreen,
   DuplicatesErrorsScreen,
   FaultyEntriesScreen,
+  PhysicalElectronicGrnsComparisonsScreen,
 } from "./Screens";
 
 function App() {
@@ -62,6 +63,12 @@ function App() {
             exact
             path="/buyback/check-for-faulty-entries"
             component={FaultyEntriesScreen}
+          />
+
+          <Route
+            exact
+            path="/buyback/compare-physical-and-electronic-entries"
+            component={PhysicalElectronicGrnsComparisonsScreen}
           />
         </AppBar>
       </Switch>

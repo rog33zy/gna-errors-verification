@@ -15,3 +15,5 @@ export { default as GenerateUnleashedFileScreen } from "./HomePageScreen/BuyBack
 export { default as DuplicatesErrorsScreen } from "./HomePageScreen/BuyBackHomePageScreen/DuplicatesErrorScreen/DuplicatesErrorScreen";
 
 export { default as FaultyEntriesScreen } from "./HomePageScreen/BuyBackHomePageScreen/FaultyEntriesScreen/FaultyEntriesScreen";
+
+export { default as PhysicalElectronicGrnsComparisonsScreen } from "./HomePageScreen/BuyBackHomePageScreen/PhysicalElectronicGrnsComparisonsScreen/PhysicalElectronicGrnsComparisonsScreen";
