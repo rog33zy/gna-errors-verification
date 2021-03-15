@@ -28,7 +28,11 @@ export default function SimplePaper(props) {
         elevation={3}
         onClick={onClickHandler}
       >
-        <Typography variant="h5" color="textSecondary">
+        <Typography
+          variant="h5"
+          color="textSecondary"
+          style={{ color: "white" }}
+        >
           {props.children}
         </Typography>
       </Paper>

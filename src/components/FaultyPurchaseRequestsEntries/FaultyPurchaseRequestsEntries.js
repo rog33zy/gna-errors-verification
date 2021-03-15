@@ -101,7 +101,6 @@ const FaultyPurchaseRequestsEntries = (props) => {
         }
       }
     }
-
     return shPurchaseRequestsSheetData;
   }
   return (

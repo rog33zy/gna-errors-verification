@@ -10,6 +10,8 @@ import Reader from "../../../../components/Reader/Reader";
 
 import classes from "../LoansScreen.module.css";
 
+import TextField from "../../../../components/UI/TextField/TextField";
+
 const GenerateUnleashedFileScreen = (props) => {
   const [unleashedFileSheetData, setUnleashedFileSheetData] = React.useState(
     []
@@ -22,6 +24,9 @@ const GenerateUnleashedFileScreen = (props) => {
     setShPaymentRequestsSheetLabel,
   ] = React.useState("Upload Smallholdr Payment Requests CSV File");
 
+  let [nextPoNum, setNextPoNum] = React.useState("");
+
+  console.log(nextPoNum);
   const unleashedFileHeaders = [
     { label: "Order Number", key: "order_number" },
     { label: "Supplier Code", key: "supplier_code" },
@@ -42,30 +47,52 @@ const GenerateUnleashedFileScreen = (props) => {
     const unleashedFileData = [];
     for (let i = 0; i < data.length; i++) {
       const shPaymentRequestsSheetDataRow = data[i];
+      let farmer;
 
-      const purchaseDateList = shPaymentRequestsSheetDataRow.purchase_date
-        .split(" ")[0]
-        .split("-");
-      const year = purchaseDateList[0];
-      const month = purchaseDateList[1];
-      const day = purchaseDateList[2];
-      const purchaseDate = `${day}/${month}/${year}`;
-
+      try {
+        farmer = shPaymentRequestsSheetDataRow.farmer
+          .trim()
+          .replace(/\s\s+/g, " ");
+      } catch (error) {
+        farmer = "Error";
+      }
       unleashedFileData.push({
-        order_number: "",
-        supplier_code: shPaymentRequestsSheetDataRow.team,
+        order_number: nextPoNum,
+        supplier_code: farmer,
         tax_rate: "",
-        supplier_reference: shPaymentRequestsSheetDataRow.grn_no_,
-        comments: "",
-        order_date: purchaseDate,
-        delivery_date: purchaseDate,
+        supplier_reference: "GRN " + shPaymentRequestsSheetDataRow.grn_no_,
+        comments: "Net Qty",
+        order_date: shPaymentRequestsSheetDataRow.purchase_date.split(" ")[0],
+        delivery_date: shPaymentRequestsSheetDataRow.purchase_date.split(
+          " "
+        )[0],
         warehouse_code: shPaymentRequestsSheetDataRow.owner,
         line_number: 1,
-        product_code: "",
-        order_quantity: shPaymentRequestsSheetDataRow.base_amount_payable,
-        unit_price: "",
-        line_comments: "Base Amount",
+        product_code: shPaymentRequestsSheetDataRow.variety,
+        order_quantity: shPaymentRequestsSheetDataRow.net_quantity__kg_,
+        unit_price: shPaymentRequestsSheetDataRow.purchase_price__per_kg_,
+        line_comments: "Net Qty",
       });
+
+      unleashedFileData.push({
+        order_number: nextPoNum,
+        supplier_code: farmer,
+        tax_rate: "",
+        supplier_reference: "GRN " + shPaymentRequestsSheetDataRow.grn_no_,
+        comments: "Loan Qty",
+        order_date: shPaymentRequestsSheetDataRow.purchase_date.split(" ")[0],
+        delivery_date: shPaymentRequestsSheetDataRow.purchase_date.split(
+          " "
+        )[0],
+        warehouse_code: shPaymentRequestsSheetDataRow.owner,
+        line_number: 2,
+        product_code: shPaymentRequestsSheetDataRow.variety,
+        order_quantity: shPaymentRequestsSheetDataRow.seed_loan_quantity__kg_,
+        unit_price: shPaymentRequestsSheetDataRow.purchase_price__per_kg_,
+        line_comments: "Loan Qty",
+      });
+
+      nextPoNum = parseInt(nextPoNum) + 1;
     }
     setUnleashedFileSheetData(unleashedFileData);
 
@@ -77,7 +104,7 @@ const GenerateUnleashedFileScreen = (props) => {
   };
 
   const isErrorButtonDisabled =
-    shPaymentRequestsSheetLabel === "Successfully Uploaded";
+    shPaymentRequestsSheetLabel === "Successfully Uploaded" && nextPoNum !== "";
 
   let contentToShow = (
     <div
@@ -87,7 +114,6 @@ const GenerateUnleashedFileScreen = (props) => {
         marginLeft: "10px",
         marginRight: "10px",
         marginTop: "20px",
-        // textTransform: "uppercase",
         fontSize: "20px",
       }}
     >
@@ -114,7 +140,6 @@ const GenerateUnleashedFileScreen = (props) => {
           marginLeft: "10px",
           marginRight: "10px",
           marginTop: "20px",
-          // textTransform: "uppercase",
           fontSize: "20px",
         }}
       >
@@ -128,7 +153,21 @@ const GenerateUnleashedFileScreen = (props) => {
       <Grid container spacing={0}>
         <Grid item xs={12}>
           <div className={classes.UploadButton}>
-            <Button variant="outlined" color="primary">
+            <TextField
+              label="Next Purchase Order Number"
+              stateValue={setNextPoNum}
+              type="number"
+            />
+          </div>
+        </Grid>
+
+        <Grid item xs={12}>
+          <div className={classes.UploadButton}>
+            <Button
+              variant="outlined"
+              color="primary"
+              disabled={nextPoNum === ""}
+            >
               {shPaymentRequestsSheetLabel}
               <Reader
                 marginLeft="-600px"

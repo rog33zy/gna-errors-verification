@@ -31,6 +31,9 @@ const FaultyPhysicalGrns = (props) => {
           shPaymentRequestsSheetData.splice(j, 1);
           i -= 1;
           j -= 1;
+          continue;
+        } else {
+          continue;
         }
       }
     }

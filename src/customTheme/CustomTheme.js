@@ -14,7 +14,7 @@ const CustomTheme = createMuiTheme({
     },
     text: {
       primary: "#4d6423",
-      secondary: "#ffffff",
+      secondary: "#4d6423",
     },
   },
 });
