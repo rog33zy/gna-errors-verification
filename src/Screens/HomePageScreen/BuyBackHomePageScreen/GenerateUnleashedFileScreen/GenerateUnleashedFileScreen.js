@@ -53,11 +53,12 @@ const GenerateUnleashedFileScreen = (props) => {
         farmer = shPaymentRequestsSheetDataRow.farmer
           .trim()
           .replace(/\s\s+/g, " ");
+          farmer = farmer.split("(GNA00000")[1].split(")")[0]
       } catch (error) {
         farmer = "Error";
       }
       unleashedFileData.push({
-        order_number: nextPoNum,
+        order_number: "PO-0000" + nextPoNum,
         supplier_code: farmer,
         tax_rate: "",
         supplier_reference: "GRN " + shPaymentRequestsSheetDataRow.grn_no_,
@@ -75,7 +76,7 @@ const GenerateUnleashedFileScreen = (props) => {
       });
 
       unleashedFileData.push({
-        order_number: nextPoNum,
+        order_number: "PO-0000" + nextPoNum,
         supplier_code: farmer,
         tax_rate: "",
         supplier_reference: "GRN " + shPaymentRequestsSheetDataRow.grn_no_,
