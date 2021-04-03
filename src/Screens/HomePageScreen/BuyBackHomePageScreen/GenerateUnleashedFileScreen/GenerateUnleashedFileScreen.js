@@ -26,19 +26,18 @@ const GenerateUnleashedFileScreen = (props) => {
 
   let [nextPoNum, setNextPoNum] = React.useState("");
 
-  console.log(nextPoNum);
   const unleashedFileHeaders = [
-    { label: "Order Number", key: "order_number" },
-    { label: "Supplier Code", key: "supplier_code" },
+    { label: "*Order Number", key: "order_number" },
+    { label: "*Supplier Code", key: "supplier_code" },
     { label: "Tax Rate", key: "tax_rate" },
     { label: "Supplier Reference", key: "supplier_reference" },
     { label: "Comments", key: "comments" },
     { label: "Order Date (DD/MM/YYYY)", key: "order_date" },
     { label: "Delivery Date (DD/MM/YYYY)", key: "delivery_date" },
     { label: "Warehouse Code", key: "warehouse_code" },
-    { label: "Line Number", key: "line_number" },
-    { label: "Product Code", key: "product_code" },
-    { label: "Order Quantity", key: "order_quantity" },
+    { label: "*Line Number", key: "line_number" },
+    { label: "*Product Code", key: "product_code" },
+    { label: "*Order Quantity", key: "order_quantity" },
     { label: "Unit Price", key: "unit_price" },
     { label: "Line Comments", key: "line_comments" },
   ];
@@ -53,10 +52,57 @@ const GenerateUnleashedFileScreen = (props) => {
         farmer = shPaymentRequestsSheetDataRow.farmer
           .trim()
           .replace(/\s\s+/g, " ");
-          farmer = farmer.split("(GNA00000")[1].split(")")[0]
+        farmer = farmer.split("(GNA00000")[1].split(")")[0];
       } catch (error) {
         farmer = "Error";
       }
+
+      let warehouseCode;
+
+      try {
+        warehouseCode = shPaymentRequestsSheetDataRow.camp
+          .split("(")[1]
+          .split(")")[0];
+      } catch (error) {
+        warehouseCode = "Error";
+      }
+
+      let productCode;
+
+      try {
+        productCode = shPaymentRequestsSheetDataRow.variety
+          .split("(")[1]
+          .split(")")[0];
+      } catch (error) {
+        productCode = "Error";
+      }
+
+      if (
+        shPaymentRequestsSheetDataRow.net_quantity__kg_ <= 0 ||
+        shPaymentRequestsSheetDataRow.seed_loan_quantity__kg_ <= 0
+      ) {
+        unleashedFileData.push({
+          order_number: "PO-0000" + nextPoNum,
+          supplier_code: farmer,
+          tax_rate: "",
+          supplier_reference: "GRN " + shPaymentRequestsSheetDataRow.grn_no_,
+          comments: "Gross Qty",
+          order_date: shPaymentRequestsSheetDataRow.purchase_date.split(" ")[0],
+          delivery_date: shPaymentRequestsSheetDataRow.purchase_date.split(
+            " "
+          )[0],
+          warehouse_code: warehouseCode,
+          line_number: 1,
+          product_code: productCode,
+          order_quantity: shPaymentRequestsSheetDataRow.gross_quantity__kg_,
+          unit_price: shPaymentRequestsSheetDataRow.purchase_price__per_kg_,
+          line_comments: "Gross Qty",
+        });
+
+        nextPoNum = parseInt(nextPoNum) + 1;
+        continue;
+      }
+
       unleashedFileData.push({
         order_number: "PO-0000" + nextPoNum,
         supplier_code: farmer,
@@ -67,9 +113,9 @@ const GenerateUnleashedFileScreen = (props) => {
         delivery_date: shPaymentRequestsSheetDataRow.purchase_date.split(
           " "
         )[0],
-        warehouse_code: shPaymentRequestsSheetDataRow.owner,
+        warehouse_code: warehouseCode,
         line_number: 1,
-        product_code: shPaymentRequestsSheetDataRow.variety,
+        product_code: productCode,
         order_quantity: shPaymentRequestsSheetDataRow.net_quantity__kg_,
         unit_price: shPaymentRequestsSheetDataRow.purchase_price__per_kg_,
         line_comments: "Net Qty",
@@ -85,9 +131,9 @@ const GenerateUnleashedFileScreen = (props) => {
         delivery_date: shPaymentRequestsSheetDataRow.purchase_date.split(
           " "
         )[0],
-        warehouse_code: shPaymentRequestsSheetDataRow.owner,
+        warehouse_code: warehouseCode,
         line_number: 2,
-        product_code: shPaymentRequestsSheetDataRow.variety,
+        product_code: productCode,
         order_quantity: shPaymentRequestsSheetDataRow.seed_loan_quantity__kg_,
         unit_price: shPaymentRequestsSheetDataRow.purchase_price__per_kg_,
         line_comments: "Loan Qty",
