@@ -24,12 +24,26 @@ const CropsProfErrorOne = (props) => {
         ) {
           continue;
         }
-        const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
-          .split("(GNA00000")[1]
-          .split(")")[0];
-        const shDownloadsSeedVariety = shDownloadLoansSheetData[j].seed_type
-          .split("(")[0]
-          .trim();
+
+        let shDownloadsFarmerId;
+
+        try {
+          shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
+            .split("(GNA00000")[1]
+            .split(")")[0];
+        } catch (error) {
+          continue;
+        }
+
+        let shDownloadsSeedVariety;
+
+        try {
+          shDownloadsSeedVariety = shDownloadLoansSheetData[j].seed_type
+            .split("(")[0]
+            .trim();
+        } catch (error) {
+          continue;
+        }
 
         if (
           shDownloadsFarmerId === shCroppingProfileFarmerId &&

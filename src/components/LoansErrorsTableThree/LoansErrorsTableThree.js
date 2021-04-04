@@ -12,17 +12,25 @@ const LoansErrorsTableThree = (props) => {
         continue;
       }
 
-      if (shDownloadLoansSheetData[i].farmer === null) {
-        shDownloadLoansSheetData.splice(i, 1);
-        i -= 1;
+      let shDownloadsFarmerId;
+
+      try {
+        shDownloadsFarmerId = shDownloadLoansSheetData[i].farmer
+          .split("(GNA00000")[1]
+          .split(")")[0];
+      } catch (error) {
         continue;
       }
-      const shDownloadsFarmerId = shDownloadLoansSheetData[i].farmer
-        .split("(GNA00000")[1]
-        .split(")")[0];
-      const shDownloadsSeedVariety = shDownloadLoansSheetData[i].seed_type
-        .split("(")[0]
-        .trim();
+
+      let shDownloadsSeedVariety;
+
+      try {
+        shDownloadsSeedVariety = shDownloadLoansSheetData[i].seed_type
+          .split("(")[0]
+          .trim();
+      } catch (error) {
+        continue;
+      }
       for (let j = 0; j < combinedInputsLoansSheetData.length; j++) {
         if (combinedInputsLoansSheetData[j] === undefined) {
           continue;

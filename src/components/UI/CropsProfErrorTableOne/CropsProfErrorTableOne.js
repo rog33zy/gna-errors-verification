@@ -47,12 +47,7 @@ export default function CustomizedTables(props) {
 
   const rows = props.rows;
 
-  const tableHeadingsList = [
-    "ID Card Number",
-    "First Name",
-    "Last Name",
-    "Seed Variety",
-  ];
+  const tableHeadingsList = ["Farmer", "Seed Variety"];
 
   let contentToShow;
 
@@ -89,32 +84,16 @@ export default function CustomizedTables(props) {
               </TableHead>
               <TableBody>
                 {rows.map((row, index) => (
-                  <StyledTableRow
-                    key={
-                      row.farmer.split("(GNA00000")[1].split(")")[0] +
-                      index.toString()
-                    }
-                  >
+                  <StyledTableRow key={row.farmer + index.toString()}>
                     <StyledTableCell component="th" scope="row">
-                      <span style={{ fontSize: "12px" }}>
-                        {row.farmer.split("(GNA00000")[1].split(")")[0]}
-                      </span>
+                      <span style={{ fontSize: "12px" }}>{row.farmer}</span>
                     </StyledTableCell>
-                    <StyledTableCell align="left">
-                      <span style={{ fontSize: "12px" }}>
-                        {row.farmer.split(" ")[0]}
-                      </span>
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      <span style={{ fontSize: "12px" }}>
-                        {row.farmer.split(" ")[1]}
-                      </span>
-                    </StyledTableCell>
+
                     <StyledTableCell align="left">
                       <span style={{ fontSize: "12px" }}>
                         {props.cropsProfList
                           ? row.crop.split("/")[1].trim()
-                          : row.seed_type.split("(")[0].trim()}
+                          : row.seed_type}
                       </span>
                     </StyledTableCell>
                   </StyledTableRow>

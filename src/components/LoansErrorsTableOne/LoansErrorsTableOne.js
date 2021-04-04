@@ -121,17 +121,34 @@ const LoansErrorsTableOne = (props) => {
         if (shDownloadLoansSheetData[j].farmer === null) {
           continue;
         }
-        const shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
-          .split("(GNA00000")[1]
-          .split(")")[0];
-        const shDownloadsSeedVariety = shDownloadLoansSheetData[j].seed_type
-          .split("(")[0]
-          .trim();
+        let shDownloadsFarmerId;
+
+        try {
+          shDownloadsFarmerId = shDownloadLoansSheetData[j].farmer
+            .split("(GNA00000")[1]
+            .split(")")[0];
+        } catch (error) {
+          shDownloadsFarmerId = "blank";
+        }
+        let shDownloadsSeedVariety;
+
+        try {
+          shDownloadsSeedVariety = shDownloadLoansSheetData[j].seed_type
+            .split("(")[0]
+            .trim();
+        } catch (error) {
+          shDownloadsSeedVariety = "blank";
+        }
 
         let shDownloadsFarmerCategory;
-        shDownloadsFarmerCategory = shDownloadLoansSheetData[
-          j
-        ].farmer_classification_grower_category.toLowerCase();
+        try {
+          shDownloadsFarmerCategory = shDownloadLoansSheetData[
+            j
+          ].farmer_classification_grower_category.toLowerCase();
+        } catch (error) {
+          shDownloadsFarmerCategory = "blank";
+        }
+
         if (shDownloadsFarmerCategory === "good_nature_green") {
           shDownloadsFarmerCategory = "good nature green";
         }
