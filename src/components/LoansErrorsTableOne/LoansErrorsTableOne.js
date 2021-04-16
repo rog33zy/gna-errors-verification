@@ -152,25 +152,63 @@ const LoansErrorsTableOne = (props) => {
         if (shDownloadsFarmerCategory === "good_nature_green") {
           shDownloadsFarmerCategory = "good nature green";
         }
-        const shDownloadsAreaOfLand = shDownloadLoansSheetData[j].area_of_land;
-        const shDownloadsSeedQuantityReceived =
+
+        let shDownloadsAreaOfLand = shDownloadLoansSheetData[j].area_of_land;
+
+        if (shDownloadsAreaOfLand === null) {
+          shDownloadsAreaOfLand = 0;
+        }
+
+        let shDownloadsSeedQuantityReceived =
           shDownloadLoansSheetData[j].amount_seeds;
-        const shDownloadsFertilizerQuantity =
+        if (shDownloadsSeedQuantityReceived === null) {
+          shDownloadsSeedQuantityReceived = 0;
+        }
+        let shDownloadsFertilizerQuantity =
           shDownloadLoansSheetData[j].amount_fertilizer;
-        const shDownloadsInoculantQuantity =
+
+        if (shDownloadsFertilizerQuantity === null) {
+          shDownloadsFertilizerQuantity = 0;
+        }
+        let shDownloadsInoculantQuantity =
           shDownloadLoansSheetData[j].amount_inoculant;
-        const shDownloadsGlyphosateQuantity =
+
+        if (shDownloadsInoculantQuantity === null) {
+          shDownloadsInoculantQuantity = 0;
+        }
+        let shDownloadsGlyphosateQuantity =
           shDownloadLoansSheetData[j].amount_glyphosate;
-        const shDownloadsPostEmergenceHerbicideQuantity =
+
+        if (shDownloadsGlyphosateQuantity === null) {
+          shDownloadsGlyphosateQuantity = 0;
+        }
+        let shDownloadsPostEmergenceHerbicideQuantity =
           shDownloadLoansSheetData[j].amount_post_emerg_herbicide;
-        const shDownloadsInsecticideType =
+        if (shDownloadsPostEmergenceHerbicideQuantity === null) {
+          shDownloadsPostEmergenceHerbicideQuantity = 0;
+        }
+        let shDownloadsInsecticideType =
           shDownloadLoansSheetData[j].insecticide;
-        const shDownloadsInsecticideQuantity =
+        if (shDownloadsInsecticideType === null) {
+          shDownloadsInsecticideType = "pack (322892)";
+        }
+        let shDownloadsInsecticideQuantity =
           shDownloadLoansSheetData[j].amount_insecticide;
-        const shDownloadsFungicideQuantity =
+        if (shDownloadsInsecticideQuantity === null) {
+          shDownloadsInsecticideQuantity = 0;
+        }
+        let shDownloadsFungicideQuantity =
           shDownloadLoansSheetData[j].amount_fungicide;
-        const shDownloadsAdditionalSeed =
+
+        if (shDownloadsFungicideQuantity === null) {
+          shDownloadsFungicideQuantity = 0;
+        }
+        let shDownloadsAdditionalSeed =
           shDownloadLoansSheetData[j].additional_seed_delivered;
+
+        if (shDownloadsAdditionalSeed === null) {
+          shDownloadsAdditionalSeed = 0;
+        }
 
         if (
           combinedInputsFarmerId === shDownloadsFarmerId &&
@@ -262,7 +300,6 @@ const LoansErrorsTableOne = (props) => {
     }
     return finalList;
   }
-
   return (
     <div>
       <Table
