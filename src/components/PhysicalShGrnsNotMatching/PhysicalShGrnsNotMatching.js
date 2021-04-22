@@ -18,8 +18,9 @@ const PhysicalShGrnsNotMatching = (props) => {
         continue;
       }
 
-      let base_amount_payable_sh =
-        shPaymentRequestsSheetDataRow.base_amount_payable;
+      let base_amount_payable_sh = parseFloat(
+        shPaymentRequestsSheetDataRow.base_amount_payable
+      ).toFixed(2);
 
       if (base_amount_payable_sh < 0) {
         base_amount_payable_sh = 0;
@@ -34,8 +35,9 @@ const PhysicalShGrnsNotMatching = (props) => {
           continue;
         }
 
-        let base_amount_payable_physical =
-          physicalGrnsSheetDataRow.base_amount_payable;
+        let base_amount_payable_physical = parseFloat(
+          physicalGrnsSheetDataRow.base_amount_payable
+        ).toFixed(2);
 
         if (base_amount_payable_physical < 0) {
           base_amount_payable_physical = 0;
@@ -57,7 +59,7 @@ const PhysicalShGrnsNotMatching = (props) => {
       <PhysicalShGrnsNotMatchingTable
         rows={errorListHandler()}
         title="Smallholdr and physical grns with different base amount values"
-        is_faulty_grn={true}
+        is_faulty_grn={false}
       />
     </div>
   );

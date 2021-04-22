@@ -189,7 +189,10 @@ const LoansErrorsTableOne = (props) => {
         }
         let shDownloadsInsecticideType =
           shDownloadLoansSheetData[j].insecticide;
-        if (shDownloadsInsecticideType === null) {
+        if (
+          shDownloadsInsecticideType === null ||
+          shDownloadsInsecticideType === "kg (94243)"
+        ) {
           shDownloadsInsecticideType = "pack (322892)";
         }
         let shDownloadsInsecticideQuantity =
