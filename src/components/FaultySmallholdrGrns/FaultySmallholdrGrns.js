@@ -7,17 +7,16 @@ const FaultySmallholdrGrns = (props) => {
   const shPaymentRequestsSheetData = props.shPaymentRequestsSheetData;
 
   function errorListHandler() {
-    for (let j = 0; j < physicalGrnsSheetData.length; j++) {
+    for (let j = 0; j < shPaymentRequestsSheetData.length; j++) {
       const shPaymentRequestsSheetDataRow = shPaymentRequestsSheetData[j];
       let grn_number_sh;
-
       try {
         grn_number_sh = shPaymentRequestsSheetDataRow.grn_no_;
       } catch (error) {
         continue;
       }
 
-      for (let i = 0; i < shPaymentRequestsSheetData.length; i++) {
+      for (let i = 0; i < physicalGrnsSheetData.length; i++) {
         const physicalGrnsSheetDataRow = physicalGrnsSheetData[i];
         let grn_number_physical;
         try {
