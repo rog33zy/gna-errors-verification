@@ -6,6 +6,9 @@ const LoansErrorsTableOne = (props) => {
   const combinedInputsLoansSheetData = props.combinedInputsLoansSheetData;
   const shDownloadLoansSheetData = props.shDownloadLoansSheetData;
 
+  console.log(combinedInputsLoansSheetData);
+  console.log(shDownloadLoansSheetData);
+
   function matchesOrNah(boolValue) {
     if (boolValue) {
       return " (Matches)";
@@ -39,84 +42,115 @@ const LoansErrorsTableOne = (props) => {
 
       const combinedInputsAreaOfLand =
         combinedInputsLoansSheetData[i].area_of_land__ha_;
+
       var combinedInputsSeedQuantityReceived =
-        combinedInputsLoansSheetData[i].seed_quantity_received__kg_;
+        combinedInputsLoansSheetData[i].total_seed_quantity_received__kg_;
       if (
         combinedInputsSeedQuantityReceived === null ||
         typeof combinedInputsSeedQuantityReceived === "string"
       ) {
         combinedInputsSeedQuantityReceived = 0;
       }
-      var combinedInputsFertilizerQuantity =
-        combinedInputsLoansSheetData[i].fertilizer_bags;
+
+      var combinedInputsSoyInoculantQuantity =
+        combinedInputsLoansSheetData[i].soybean_inoculant_qty;
       if (
-        combinedInputsFertilizerQuantity === null ||
-        typeof combinedInputsFertilizerQuantity === "string"
+        combinedInputsSoyInoculantQuantity === null ||
+        typeof combinedInputsSoyInoculantQuantity === "string"
       ) {
-        combinedInputsFertilizerQuantity = 0;
+        combinedInputsSoyInoculantQuantity = 0;
       }
-      var combinedInputsInoculantQuantity =
-        combinedInputsLoansSheetData[i].inoculant_quantity;
+
+      var combinedInputsGroundnutsInoculantQuantity =
+        combinedInputsLoansSheetData[i].groundnut_inoculant_qty;
       if (
-        combinedInputsInoculantQuantity === null ||
-        typeof combinedInputsInoculantQuantity === "string"
+        combinedInputsGroundnutsInoculantQuantity === null ||
+        typeof combinedInputsGroundnutsInoculantQuantity === "string"
       ) {
-        combinedInputsInoculantQuantity = 0;
+        combinedInputsGroundnutsInoculantQuantity = 0;
       }
+
+      var combinedInputsMAPFertilizerQuantity =
+        combinedInputsLoansSheetData[i].fertilizer_map_qty;
+      if (
+        combinedInputsMAPFertilizerQuantity === null ||
+        typeof combinedInputsMAPFertilizerQuantity === "string"
+      ) {
+        combinedInputsMAPFertilizerQuantity = 0;
+      }
+
+      var combinedInputsSoyaMixAFertilizerQuantity =
+        combinedInputsLoansSheetData[i].fertilizer_soya_mix_a_qty;
+      if (
+        combinedInputsSoyaMixAFertilizerQuantity === null ||
+        typeof combinedInputsSoyaMixAFertilizerQuantity === "string"
+      ) {
+        combinedInputsSoyaMixAFertilizerQuantity = 0;
+      }
+
+      var combinedInputsUreaFertilizerQuantity =
+        combinedInputsLoansSheetData[i].urea_qty;
+      if (
+        combinedInputsUreaFertilizerQuantity === null ||
+        typeof combinedInputsUreaFertilizerQuantity === "string"
+      ) {
+        combinedInputsUreaFertilizerQuantity = 0;
+      }
+
+      var combinedInputsGypsumQuantity =
+        combinedInputsLoansSheetData[i].gypsum_qty;
+      if (
+        combinedInputsGypsumQuantity === null ||
+        typeof combinedInputsGypsumQuantity === "string"
+      ) {
+        combinedInputsGypsumQuantity = 0;
+      }
+
       var combinedInputsGlyphosateQuantity =
-        combinedInputsLoansSheetData[i].glyphosate_quantity;
+        combinedInputsLoansSheetData[i].glyphosate_qty;
       if (
         combinedInputsGlyphosateQuantity === null ||
         typeof combinedInputsGlyphosateQuantity === "string"
       ) {
         combinedInputsGlyphosateQuantity = 0;
       }
-      var combinedInputsPostEmergenceHerbicideQuantity =
-        combinedInputsLoansSheetData[i].post_emergency_herbicide_quantity;
+
+      var combinedInputsDeltamethrinQuantity =
+        combinedInputsLoansSheetData[i].deltamethrin_qty;
       if (
-        combinedInputsPostEmergenceHerbicideQuantity === null ||
-        typeof combinedInputsPostEmergenceHerbicideQuantity === "string"
+        combinedInputsDeltamethrinQuantity === null ||
+        typeof combinedInputsDeltamethrinQuantity === "string"
       ) {
-        combinedInputsPostEmergenceHerbicideQuantity = 0;
-      }
-      var combinedInputsInsecticideType =
-        combinedInputsLoansSheetData[i].insecticide_type;
-      if (combinedInputsInsecticideType === null) {
-        combinedInputsInsecticideType = "pack (322892)";
+        combinedInputsDeltamethrinQuantity = 0;
       }
 
-      if (combinedInputsInsecticideType === "Cypermetherin") {
-        combinedInputsInsecticideType = "pack (322892)";
+      var combinedInputsAcetamipridQuantity =
+        combinedInputsLoansSheetData[i].acetamiprid_qty;
+      if (
+        combinedInputsAcetamipridQuantity === null ||
+        typeof combinedInputsAcetamipridQuantity === "string"
+      ) {
+        combinedInputsAcetamipridQuantity = 0;
       }
 
-      if (combinedInputsInsecticideType === "Acetamide") {
-        combinedInputsInsecticideType = "pack (322890)";
+      var combinedInputsXP16SprayerQuantity =
+        combinedInputsLoansSheetData[i].xp16_sprayer_qty;
+      if (
+        combinedInputsXP16SprayerQuantity === null ||
+        typeof combinedInputsXP16SprayerQuantity === "string"
+      ) {
+        combinedInputsXP16SprayerQuantity = 0;
       }
 
-      var combinedInputsInsecticideQuantity =
-        combinedInputsLoansSheetData[i].insecticide_quantity;
+      var combinedInputsHD400SprayerQuantity =
+        combinedInputsLoansSheetData[i].hd400_sprayer_qty;
       if (
-        combinedInputsInsecticideQuantity === null ||
-        typeof combinedInputsInsecticideQuantity === "string"
+        combinedInputsHD400SprayerQuantity === null ||
+        typeof combinedInputsHD400SprayerQuantity === "string"
       ) {
-        combinedInputsInsecticideQuantity = 0;
+        combinedInputsHD400SprayerQuantity = 0;
       }
-      var combinedInputsFungicideQuantity =
-        combinedInputsLoansSheetData[i].fungicide_quantity;
-      if (
-        combinedInputsFungicideQuantity === null ||
-        typeof combinedInputsFungicideQuantity === "string"
-      ) {
-        combinedInputsFungicideQuantity = 0;
-      }
-      var combinedInputsAdditionalSeed =
-        combinedInputsLoansSheetData[i].additional_seed_received__kg_;
-      if (
-        combinedInputsAdditionalSeed === null ||
-        typeof combinedInputsAdditionalSeed === "string"
-      ) {
-        combinedInputsAdditionalSeed = 0;
-      }
+
       for (var j = 0; j < shDownloadLoansSheetData.length; j++) {
         if (shDownloadLoansSheetData[j].farmer === null) {
           continue;
@@ -153,108 +187,102 @@ const LoansErrorsTableOne = (props) => {
           shDownloadsFarmerCategory = "good nature green";
         }
 
-        let shDownloadsAreaOfLand = shDownloadLoansSheetData[j].area_of_land;
-
-        if (shDownloadsAreaOfLand === null) {
-          shDownloadsAreaOfLand = 0;
-        }
+        let shDownloadsAreaOfLand = shDownloadLoansSheetData[j].area_of_land ?? 0;
 
         let shDownloadsSeedQuantityReceived =
-          shDownloadLoansSheetData[j].amount_seeds;
-        if (shDownloadsSeedQuantityReceived === null) {
-          shDownloadsSeedQuantityReceived = 0;
-        }
-        let shDownloadsFertilizerQuantity =
-          shDownloadLoansSheetData[j].amount_fertilizer;
+          shDownloadLoansSheetData[j].amount_seeds ?? 0;
 
-        if (shDownloadsFertilizerQuantity === null) {
-          shDownloadsFertilizerQuantity = 0;
-        }
-        let shDownloadsInoculantQuantity =
-          shDownloadLoansSheetData[j].amount_inoculant;
+        var shDownloadsSoyInoculantQuantity =
+          shDownloadLoansSheetData[j].amount_soy_inoculant ?? 0;
 
-        if (shDownloadsInoculantQuantity === null) {
-          shDownloadsInoculantQuantity = 0;
-        }
+        let shDownloadsGroundnutsInoculantQuantity =
+          shDownloadLoansSheetData[j].amount_groundnut_inoculant ?? 0;
+
+        let shDownloadsFertMAPQuantity =
+          shDownloadLoansSheetData[j].amount_fertilizer_map ?? 0;
+
+        let shDownloadsFertSoyaMixAQuantity =
+          shDownloadLoansSheetData[j].amount_fertilizer_soya_mix_a ?? 0;
+
+        let shDownloadsFertUreaQuantity =
+          shDownloadLoansSheetData[j].amount_fertilizer_urea ?? 0;
+
+        let shDownloadsGypsumQuantity =
+          shDownloadLoansSheetData[j].amount_fertilizer_gypsum ?? 0;
+
         let shDownloadsGlyphosateQuantity =
-          shDownloadLoansSheetData[j].amount_glyphosate;
+          shDownloadLoansSheetData[j].amount_glyphosate ?? 0;
 
-        if (shDownloadsGlyphosateQuantity === null) {
-          shDownloadsGlyphosateQuantity = 0;
-        }
-        let shDownloadsPostEmergenceHerbicideQuantity =
-          shDownloadLoansSheetData[j].amount_post_emerg_herbicide;
-        if (shDownloadsPostEmergenceHerbicideQuantity === null) {
-          shDownloadsPostEmergenceHerbicideQuantity = 0;
-        }
-        let shDownloadsInsecticideType =
-          shDownloadLoansSheetData[j].insecticide;
-        if (
-          shDownloadsInsecticideType === null ||
-          shDownloadsInsecticideType === "kg (94243)"
-        ) {
-          shDownloadsInsecticideType = "pack (322892)";
-        }
-        let shDownloadsInsecticideQuantity =
-          shDownloadLoansSheetData[j].amount_insecticide;
-        if (shDownloadsInsecticideQuantity === null) {
-          shDownloadsInsecticideQuantity = 0;
-        }
-        let shDownloadsFungicideQuantity =
-          shDownloadLoansSheetData[j].amount_fungicide;
+        let shDownloadsDeltamethrinQuantity =
+          shDownloadLoansSheetData[j].amount_deltamethrin ?? 0;
 
-        if (shDownloadsFungicideQuantity === null) {
-          shDownloadsFungicideQuantity = 0;
-        }
-        let shDownloadsAdditionalSeed =
-          shDownloadLoansSheetData[j].additional_seed_delivered;
+        let shDownloadsAcetamipridQuantity =
+          shDownloadLoansSheetData[j].amount_acetamiprid ?? 0;
 
-        if (shDownloadsAdditionalSeed === null) {
-          shDownloadsAdditionalSeed = 0;
-        }
+        let shDownloadsXP160SprayerQuantity =
+          shDownloadLoansSheetData[j].amount_xp160_sprayer ?? 0;
+
+        let shDownloadsHD400SprayerQuantity =
+          shDownloadLoansSheetData[j].amount_hd400_sprayer ?? 0;
 
         if (
           combinedInputsFarmerId === shDownloadsFarmerId &&
           combinedInputsSeedVariety === shDownloadsSeedVariety
         ) {
+
           const doesFarmerCategoryMatch =
             combinedInputsFarmerCategory === shDownloadsFarmerCategory;
+
           const doesAreaOfLandMatch =
             combinedInputsAreaOfLand === shDownloadsAreaOfLand;
+
           const doesSeedQuantityReceivedMatch =
             combinedInputsSeedQuantityReceived ===
             shDownloadsSeedQuantityReceived;
-          const doesFertilizerQuantityMatch =
-            combinedInputsFertilizerQuantity === shDownloadsFertilizerQuantity;
-          const doesInoculantQuantityMatch =
-            combinedInputsInoculantQuantity === shDownloadsInoculantQuantity;
+
+          const doesFertilizerMAPQuantityMatch =
+            combinedInputsMAPFertilizerQuantity === shDownloadsFertMAPQuantity;
+
+          const doesFertilizerSoyaMixAQuantityMatch =
+            combinedInputsSoyaMixAFertilizerQuantity === shDownloadsFertSoyaMixAQuantity;
+
+          const doesFertilizerUreaQuantityMatch =
+            combinedInputsUreaFertilizerQuantity === shDownloadsFertUreaQuantity;
+
+          const doesGypsumQuantityMatch = combinedInputsGypsumQuantity === shDownloadsGypsumQuantity;
+
+          const doesSoyInoculantQuantityMatch =
+            combinedInputsSoyInoculantQuantity === shDownloadsSoyInoculantQuantity;
+
+          const doesGroundnutsInoculantQuantityMatch =
+            combinedInputsGroundnutsInoculantQuantity === shDownloadsGroundnutsInoculantQuantity;
+
           const doesGlyphosateQuantityMatch =
             combinedInputsGlyphosateQuantity === shDownloadsGlyphosateQuantity;
-          const doesPostEmergenceHerbicideQuantityMatch =
-            combinedInputsPostEmergenceHerbicideQuantity ===
-            shDownloadsPostEmergenceHerbicideQuantity;
-          const doesInsecticideTypeMatch =
-            combinedInputsInsecticideType === shDownloadsInsecticideType;
-          const doesInsecticideQuantityMatch =
-            combinedInputsInsecticideQuantity ===
-            shDownloadsInsecticideQuantity;
-          const doesFungicideQuantityMatch =
-            combinedInputsFungicideQuantity === shDownloadsFungicideQuantity;
-          const doesAdditionalSeedMatch =
-            combinedInputsAdditionalSeed === shDownloadsAdditionalSeed;
+
+          const doesDeltamethrinQuantityMatch = combinedInputsDeltamethrinQuantity === shDownloadsDeltamethrinQuantity;
+
+          const doesAcemtamipridQuanityMatch = combinedInputsAcetamipridQuantity === shDownloadsAcetamipridQuantity;
+
+          const doesXP160SprayerQuantityMatch = combinedInputsXP16SprayerQuantity === shDownloadsXP160SprayerQuantity;
+
+          const doesHD400SprayerQuantityMatch = combinedInputsHD400SprayerQuantity === shDownloadsHD400SprayerQuantity;
 
           if (
             !doesFarmerCategoryMatch ||
             !doesAreaOfLandMatch ||
             !doesSeedQuantityReceivedMatch ||
-            !doesFertilizerQuantityMatch ||
-            !doesInoculantQuantityMatch ||
+            !doesFertilizerMAPQuantityMatch ||
+            !doesFertilizerSoyaMixAQuantityMatch ||
+            !doesFertilizerUreaQuantityMatch ||
+            !doesGypsumQuantityMatch ||
             !doesGlyphosateQuantityMatch ||
-            !doesPostEmergenceHerbicideQuantityMatch ||
-            !doesInsecticideTypeMatch ||
-            !doesInsecticideQuantityMatch ||
-            !doesFungicideQuantityMatch ||
-            !doesAdditionalSeedMatch
+            !doesSoyInoculantQuantityMatch ||
+            !doesGroundnutsInoculantQuantityMatch ||
+            !doesDeltamethrinQuantityMatch ||
+            !doesAcemtamipridQuanityMatch ||
+            !doesXP160SprayerQuantityMatch ||
+            !doesHD400SprayerQuantityMatch
           ) {
             finalList.push({
               farmer_id: shDownloadsFarmerId,
@@ -265,33 +293,26 @@ const LoansErrorsTableOne = (props) => {
                 matchesOrNah(doesFarmerCategoryMatch),
               area_of_land:
                 shDownloadsAreaOfLand + matchesOrNah(doesAreaOfLandMatch),
-              seed_quantity_received:
+              total_seed_quantity_received:
                 shDownloadsSeedQuantityReceived +
                 matchesOrNah(doesSeedQuantityReceivedMatch),
-              fertilizer_quantity:
-                shDownloadsFertilizerQuantity +
-                matchesOrNah(doesFertilizerQuantityMatch),
-              inoculant_quantity:
-                shDownloadsInoculantQuantity +
-                matchesOrNah(doesInoculantQuantityMatch),
-              glyphosateQuantity:
-                shDownloadsGlyphosateQuantity +
-                matchesOrNah(doesGlyphosateQuantityMatch),
-              post_emergence_herbicide_quantity:
-                shDownloadsPostEmergenceHerbicideQuantity +
-                matchesOrNah(doesPostEmergenceHerbicideQuantityMatch),
-              insecticide_type:
-                shDownloadsInsecticideType +
-                matchesOrNah(doesInsecticideTypeMatch),
-              insecticide_quantity:
-                shDownloadsInsecticideQuantity +
-                matchesOrNah(doesInsecticideQuantityMatch),
-              fungicide_quantity:
-                shDownloadsFungicideQuantity +
-                matchesOrNah(doesFungicideQuantityMatch),
-              additional_seed_delivered:
-                shDownloadsAdditionalSeed +
-                matchesOrNah(doesAdditionalSeedMatch),
+              soybean_inoculant_quantity: shDownloadsSoyInoculantQuantity + matchesOrNah(doesSoyInoculantQuantityMatch),
+              groundnut_inoculant_quantity: shDownloadsGroundnutsInoculantQuantity + matchesOrNah(doesGroundnutsInoculantQuantityMatch),
+              fertilizer_map_quantity:
+                shDownloadsFertMAPQuantity +
+                matchesOrNah(doesFertilizerMAPQuantityMatch),
+              fertilizer_soy_mix_a_quantity:
+                shDownloadsFertSoyaMixAQuantity +
+                matchesOrNah(doesFertilizerSoyaMixAQuantityMatch),
+              fertilizer_urea_quantity:
+                shDownloadsFertUreaQuantity +
+                matchesOrNah(doesFertilizerUreaQuantityMatch),
+              gypsum_quantity: shDownloadsGypsumQuantity + matchesOrNah(doesGypsumQuantityMatch),
+              glyphosate_quantity: shDownloadsGlyphosateQuantity + matchesOrNah(doesGlyphosateQuantityMatch),
+              deltamethrin_quantity: shDownloadsDeltamethrinQuantity + matchesOrNah(doesDeltamethrinQuantityMatch),
+              acetamiprid_quantity: shDownloadsAcetamipridQuantity + matchesOrNah(doesAcemtamipridQuanityMatch),
+              xp16_sprayer_quantity: shDownloadsXP160SprayerQuantity + matchesOrNah(doesXP160SprayerQuantityMatch),
+              hd400_sprayer_quantity: shDownloadsHD400SprayerQuantity + matchesOrNah(doesHD400SprayerQuantityMatch),
             });
           } else {
             continue;

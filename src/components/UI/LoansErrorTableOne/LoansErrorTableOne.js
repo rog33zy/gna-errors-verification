@@ -51,15 +51,20 @@ export default function CustomizedTables(props) {
   const tableHeadingsList = [
     "ID",
     "Seed",
-    "Farmer Category",
+    "Category",
     "Area of Land",
     "Seed Qty",
-    "Add Seed",
-    "Insect Type",
-    "Insect Qty",
-    "Fert Qty",
-    "Inoculant Qty",
+    "Soy Inoc Qty",
+    "Gnuts Inoc Qty",
+    "MAP Qty",
+    "Soya Mix Qty",
+    "Urea Qty",
+    "Gypsum Qty",
     "Glyph Qty",
+    "Delta Qty",
+    "Aceta Qty",
+    "XP16 Qty",
+    "HD400 Qty",
   ];
 
   let contentToShow;
@@ -121,40 +126,78 @@ export default function CustomizedTables(props) {
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         <span style={{ fontSize: "12px" }}>
-                          {row.seed_quantity_received}
+                          {row.total_seed_quantity_received}
                         </span>
                       </StyledTableCell>
 
                       <StyledTableCell scope="row">
                         <span style={{ fontSize: "12px" }}>
-                          {row.additional_seed_delivered}
+                          {row.soybean_inoculant_quantity}
                         </span>
                       </StyledTableCell>
+
                       <StyledTableCell align="left">
                         <span style={{ fontSize: "12px" }}>
-                          {row.insecticide_type}
+                          {row.groundnut_inoculant_quantity}
                         </span>
                       </StyledTableCell>
+
                       <StyledTableCell align="left">
                         <span style={{ fontSize: "12px" }}>
-                          {row.insecticide_quantity}
+                          {row.fertilizer_map_quantity}
                         </span>
                       </StyledTableCell>
+
                       <StyledTableCell align="left">
                         <span style={{ fontSize: "12px" }}>
-                          {row.fertilizer_quantity}
+                          {row.fertilizer_soy_mix_a_quantity}
                         </span>
                       </StyledTableCell>
+
                       <StyledTableCell align="left">
                         <span style={{ fontSize: "12px" }}>
-                          {row.inoculant_quantity}
+                          {row.fertilizer_urea_quantity}
                         </span>
                       </StyledTableCell>
+
                       <StyledTableCell align="left">
                         <span style={{ fontSize: "12px" }}>
-                          {row.glyphosateQuantity}
+                          {row.gypsum_quantity}
                         </span>
                       </StyledTableCell>
+
+                      <StyledTableCell align="left">
+                        <span style={{ fontSize: "12px" }}>
+                          {row.glyphosate_quantity}
+                        </span>
+                      </StyledTableCell>
+
+                      <StyledTableCell align="left">
+                        <span style={{ fontSize: "12px" }}>
+                          {row.deltamethrin_quantity}
+                        </span>
+                      </StyledTableCell>
+
+                      <StyledTableCell align="left">
+                        <span style={{ fontSize: "12px" }}>
+                          {row.acetamiprid_quantity}
+                        </span>
+                      </StyledTableCell>
+
+                      <StyledTableCell align="left">
+                        <span style={{ fontSize: "12px" }}>
+                          {row.xp16_sprayer_quantity}
+                        </span>
+                      </StyledTableCell>
+
+                      <StyledTableCell align="left">
+                        <span style={{ fontSize: "12px" }}>
+                          {row.hd400_sprayer_quantity}
+                        </span>
+                      </StyledTableCell>
+
+
+
                     </StyledTableRow>
                   </Tooltip>
                 ))}
