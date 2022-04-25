@@ -47,7 +47,9 @@ const GenerateUnleashedFileScreen = (props) => {
     for (let i = 0; i < data.length; i++) {
       const shPaymentRequestsSheetDataRow = data[i];
       let farmer;
-
+      if (shPaymentRequestsSheetDataRow.guid === null) {
+        break;
+      }
       try {
         farmer = shPaymentRequestsSheetDataRow.farmer
           .trim()
